@@ -8,6 +8,12 @@ const FORTNITE_GG_IDS: Record<string, number> = {
   "slurp jonesy": 248,
 };
 
+// Slurp Jonesy's verified base-style asset; its page uses style-3.jpg,
+// not the generic icon.png path.
+const FORTNITE_GG_BASE_IMAGES: Record<number, string> = {
+  248: "https://fortnite.gg/img/items/248/style-3.jpg",
+};
+
 type ApiOption = { tag?: string; name?: string; image?: string };
 type ApiItem = {
   id: string;
@@ -58,7 +64,7 @@ function toOutfitCards(item: ApiItem): CosmeticCard[] {
   return cardStyles.map((styleName, index) => {
     const isBase = index === 0;
     const image = isBase
-      ? `https://fortnite.gg/img/items/${ggId}/icon.png`
+      ? (FORTNITE_GG_BASE_IMAGES[ggId] ?? `https://fortnite.gg/img/items/${ggId}/icon.png`)
       : `https://fortnite.gg/img/items/${ggId}/style-${index}.jpg`;
 
     return {
