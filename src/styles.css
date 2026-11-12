@@ -80,21 +80,36 @@ h1 { margin: 5px 0 0; font: 800 34px "Barlow Condensed",sans-serif; }
 .section-heading h2 { font:800 27px "Barlow Condensed",sans-serif; margin:7px 0 3px; }
 .section-heading p { color:var(--muted); font-size:11px; margin:0; }
 .collection-count { color:#c4b5fd; font-size:10px; font-weight:800; letter-spacing:1px; white-space:nowrap; }
-.card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(205px,1fr)); gap:16px; }
-.cosmetic-card { --rarity:#a78bfa; background:linear-gradient(160deg,#24293a,#171b27); border:1px solid color-mix(in srgb,var(--rarity) 42%,transparent); border-radius:15px; padding:10px; overflow:hidden; box-shadow:0 10px 28px #0002; }
-.rarity-epic { --rarity:#b47aff; }
-.cosmetic-card-top { display:flex; justify-content:space-between; color:var(--rarity); font-size:9px; font-weight:800; letter-spacing:1px; padding:4px 3px 9px; }
-.cosmetic-art { height:205px; background:radial-gradient(ellipse at 50% 45%,color-mix(in srgb,var(--rarity) 30%,#22283a),#111621 72%); border:1px solid color-mix(in srgb,var(--rarity) 35%,transparent); border-radius:9px; overflow:hidden; display:grid; place-items:center; }
-.cosmetic-art img { width:100%; height:100%; object-fit:contain; }
-.image-fallback { padding:16px; text-align:center; display:grid; gap:8px; color:#c5c9d5; }
-.image-fallback strong { font:800 24px "Barlow Condensed",sans-serif; color:white; }
-.image-fallback span,.image-fallback small { font-size:9px; letter-spacing:1px; color:var(--muted); }
-.cosmetic-card-info { padding:12px 3px 3px; }
-.cosmetic-category { color:var(--muted); font-size:8px; letter-spacing:1.2px; font-weight:700; }
-.cosmetic-card-info h3 { font:800 23px "Barlow Condensed",sans-serif; margin:4px 0; }
-.cosmetic-card-info p { color:var(--muted); font-size:9px; margin:0 0 12px; letter-spacing:.8px; }
-.collect-button { width:100%; border:1px solid color-mix(in srgb,var(--rarity) 55%,transparent); background:color-mix(in srgb,var(--rarity) 16%,transparent); color:#e8dcff; border-radius:8px; padding:10px 7px; display:flex; align-items:center; justify-content:center; gap:7px; font-size:9px; font-weight:800; letter-spacing:.7px; cursor:pointer; }
-.collect-button:disabled { color:#a6d9bd; border-color:#3b8a64; background:#24583e44; cursor:default; }
+.card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; align-items:start; }
+.cosmetic-card { --rarity:#a78bfa; position:relative; display:flex; flex-direction:column; width:100%; aspect-ratio:0.69; min-height:390px; overflow:hidden; color:#171515; background:#dedbd1; border:1px solid color-mix(in srgb,var(--rarity) 65%,#171515); border-radius:2px; box-shadow:0 12px 30px #0005; }
+.rarity-common { --rarity:#b8bdc7; }
+.rarity-uncommon { --rarity:#71c96b; }
+.rarity-rare { --rarity:#5ba9ed; }
+.rarity-epic { --rarity:#a66aff; }
+.rarity-legendary { --rarity:#efa13e; }
+.rarity-mythic { --rarity:#e8c85b; }
+.rarity-exotic { --rarity:#5bd6c5; }
+.rarity-promo { --rarity:#e78acb; }
+.card-artwork-header { position:relative; z-index:2; flex:0 0 58px; display:flex; align-items:flex-start; justify-content:center; padding:7px 9px 5px; background:#dedbd1; border-bottom:2px solid #8c39ff; }
+.artwork-label { position:absolute; top:13px; left:7px; padding:2px 7px; color:white; background:#8b35ef; border-radius:4px; font-size:8px; line-height:1.2; }
+.card-heading { min-width:0; max-width:78%; text-align:center; }
+.card-heading h3 { overflow:hidden; margin:0; color:#151313; font:700 clamp(17px,1.7vw,23px)/1.05 Georgia,"Times New Roman",serif; text-overflow:ellipsis; white-space:nowrap; }
+.card-rarity-subtitle { display:block; margin-top:4px; color:#a12c2c; font:700 8px Georgia,"Times New Roman",serif; letter-spacing:1.1px; text-transform:uppercase; }
+.cosmetic-art { position:relative; flex:1 1 auto; min-height:0; overflow:hidden; background:#283a23; }
+.cosmetic-art img { display:block; width:100%; height:100%; object-fit:cover; object-position:center 28%; }
+.cosmetic-art::after { position:absolute; inset:45% 0 0; content:""; pointer-events:none; background:linear-gradient(180deg,transparent 0%,rgba(12,12,12,.2) 36%,#111 100%); }
+.artwork-speckles { position:absolute; z-index:1; inset:0; pointer-events:none; opacity:.58; background-image:radial-gradient(circle at 8% 20%,#111 0 1px,transparent 1.7px),radial-gradient(circle at 14% 33%,#b62c2c 0 1px,transparent 1.8px),radial-gradient(circle at 91% 12%,#171313 0 1px,transparent 1.8px),radial-gradient(circle at 84% 27%,#f1d7a2 0 1px,transparent 1.8px),radial-gradient(circle at 94% 61%,#111 0 1px,transparent 1.8px),radial-gradient(circle at 5% 72%,#111 0 1px,transparent 1.8px); background-size:83px 91px,117px 103px,101px 89px,137px 119px,91px 127px,109px 97px; }
+.cosmetic-card-info { position:relative; z-index:2; flex:0 0 116px; display:flex; flex-direction:column; justify-content:flex-start; padding:9px 16px 11px; color:#f0ece5; background:#11100f; }
+.card-detail-lines { display:flex; justify-content:space-between; gap:24px; margin:0 0 9px; }
+.card-detail-lines span { width:38%; height:1px; background:#5c5955; }
+.card-style-name { min-height:15px; margin-bottom:7px; color:#d8d1c8; text-align:center; font:italic 10px Georgia,"Times New Roman",serif; text-transform:uppercase; }
+.card-detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.card-detail { min-width:0; display:grid; gap:2px; }
+.card-detail > span,.source-link > span { color:#918b83; font-size:7px; font-weight:700; letter-spacing:1px; text-transform:uppercase; }
+.card-detail strong { overflow:hidden; color:#eee8df; font-size:9px; font-weight:600; text-overflow:ellipsis; white-space:nowrap; }
+.source-link { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:auto; padding-top:6px; border-top:1px solid #393633; color:#d7c5ff; text-decoration:none; }
+.source-link strong { overflow:hidden; font-size:8px; text-align:right; text-overflow:ellipsis; white-space:nowrap; }
+.source-link:hover strong { color:#fff; }
 .source-note { color:var(--muted); font-size:10px; margin-top:18px; line-height:1.7; }
 .source-note a { color:#c4b5fd; }
 @media (max-width:760px) { .section-heading { align-items:start; flex-direction:column; } .card-grid { grid-template-columns:repeat(auto-fill,minmax(155px,1fr)); gap:10px; } .cosmetic-art { height:170px; } }
