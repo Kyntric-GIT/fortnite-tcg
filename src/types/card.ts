@@ -6,6 +6,6 @@ export interface CosmeticCard {
   id: string; name: string; category: CosmeticCategory; rarity: CardRarity;
   series: CosmeticSeries; description: string; chapter: number; season: number;
   releaseDate: string; releaseType: "item-shop" | "battle-pass" | "promo" | "crew" | "other";
-  styles: CosmeticStyle[]; sourceUrl: string;
+  styles: CosmeticStyle[]; sourceUrl: string; acquisitionLabel?: string;
 }
 export interface OwnedCard { cardId: string; styleId: string; quantity: number; }
