@@ -10,33 +10,39 @@ interface Props {
 export default function CosmeticCard({ card, styleId }: Props) {
   const style = card.styles.find((item) => item.id === styleId) ?? card.styles[0];
   const [imageFailed, setImageFailed] = useState(false);
-
-  // Broken or missing artwork means this card is omitted, not shown with a
-  // placeholder or a misleading image.
   if (imageFailed || !style?.image) return null;
+
+  const rarity = rarityLabels[card.rarity] ?? card.rarity;
+  const series = card.series ? (seriesLabels[card.series] ?? card.series) : "No Series";
+  const season = card.chapter && card.season
+    ? `Chapter ${card.chapter} · Season ${card.season}`
+    : "Season information unavailable";
+  const obtainment = card.acquisitionLabel ?? "View obtainment details";
 
   return (
     <article className={`cosmetic-card rarity-${card.rarity}`}>
-      <div className="cosmetic-card-top">
-        <span>{rarityLabels[card.rarity] ?? card.rarity}</span>
-        <span>{card.series ? (seriesLabels[card.series] ?? card.series) : "No Series"}</span>
-      </div>
+      <header className="card-artwork-header">
+        <span className="artwork-label">Artwork</span>
+        <div className="card-heading">
+          <h3>{card.name}</h3>
+          <span className="card-rarity-subtitle">{rarity}</span>
+        </div>
+      </header>
       <div className="cosmetic-art">
-        <img
-          src={style.image}
-          alt={`${card.name} — ${style.name}`}
-          loading="lazy"
-          onError={() => setImageFailed(true)}
-        />
+        <img src={style.image} alt={`${card.name} — ${style.name}`} loading="lazy" onError={() => setImageFailed(true)} />
+        <span className="artwork-speckles" aria-hidden="true" />
       </div>
-      <div className="cosmetic-card-info">
-        <span className="cosmetic-category">{card.category.toUpperCase()} · {style.name.toUpperCase()}</span>
-        <h3>{card.name}</h3>
-        <p>{card.chapter ? `CHAPTER ${card.chapter} · SEASON ${card.season}` : "SEASON INFORMATION UNAVAILABLE"}</p>
+      <footer className="cosmetic-card-info">
+        <div className="card-detail-lines" aria-hidden="true"><span /><span /></div>
+        <div className="card-style-name">{style.name}</div>
+        <div className="card-detail-grid">
+          <div className="card-detail"><span>Series</span><strong>{series}</strong></div>
+          <div className="card-detail"><span>Season</span><strong>{season}</strong></div>
+        </div>
         <a className="source-link" href={card.sourceUrl} target="_blank" rel="noreferrer">
-          {card.acquisitionLabel ?? "VIEW OBTAINMENT DETAILS"} ↗
+          <span>Obtained from</span><strong>{obtainment} ↗</strong>
         </a>
-      </div>
+      </footer>
     </article>
   );
 }
