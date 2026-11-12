@@ -1,40 +1,25 @@
 import type { CosmeticCard } from "../types/card";
 
-// Slurp Jonesy data and selectable style labels are based on its Fortnite.GG listing.
-// Image endpoints are served by Fortnite.GG; keep the source attribution visible in the UI.
+// Verified Fortnite.GG listing for the initial reference outfit.
 export const cosmeticCards: CosmeticCard[] = [
   {
-    id: "slurp-jonesy",
+    id: "slurp-jonesy-base",
     name: "Slurp Jonesy",
     category: "outfit",
     rarity: "epic",
     series: "slurp",
-    description: "Slurp up and ship out. Reactive: the head transforms with higher shields.",
+    description: "Slurp up and ship out. Reactive appearance changes are represented by the base outfit card.",
     chapter: 2,
     season: 2,
     releaseDate: "2020-03-20",
     releaseType: "item-shop",
     sourceUrl: "https://fortnite.gg/cosmetics?id=248&type=outfit",
+    acquisitionLabel: "Item Shop history",
     styles: [
-      {
-        id: "reactive",
-        name: "Reactive",
-        image: "https://fortnite.gg/img/items/248/style-1.jpg",
-      },
-      {
-        id: "monster",
-        name: "Monster",
-        image: "https://fortnite.gg/img/items/248/style-2.jpg",
-      },
       {
         id: "base",
         name: "Base",
         image: "https://fortnite.gg/img/items/248/style-3.jpg",
-      },
-      {
-        id: "blob-head",
-        name: "Blob Head",
-        image: "https://fortnite.gg/img/items/248/style-4.jpg",
       },
     ],
   },
