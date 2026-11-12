@@ -18,7 +18,7 @@ export default function CosmeticCard({ card, styleId, owned, onAdd }: Props) {
     <article className={`cosmetic-card rarity-${card.rarity}`}>
       <div className="cosmetic-card-top">
         <span>{rarityLabels[card.rarity]}</span>
-        <span>{card.series ? seriesLabels[card.series] : "No Series"}</span>
+        <span>{card.series ? (seriesLabels[card.series] ?? card.series) : "No Series"}</span>
       </div>
       <div className="cosmetic-art">
         {!imageFailed ? (
